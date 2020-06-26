@@ -11,7 +11,7 @@ const Login: React.FC = () => (
     <Form>
       <h1>Entrar</h1>
       <input type="text" placeholder="email@email.com" />
-      <input type="text" placeholder="Mínimo 6 caracteres" />
+      <input type="password" placeholder="Mínimo 6 caracteres" />
       <button type="submit">Entrar</button>
     </Form>
     <span>

@@ -1,5 +1,12 @@
 import React from 'react';
+import { FiChevronLeft } from 'react-icons/fi';
 
-const Header: React.FC = () => <div />;
+import { Container } from './styles';
+
+const Header: React.FC = () => (
+  <Container>
+    <FiChevronLeft />
+  </Container>
+);
 
 export default Header;

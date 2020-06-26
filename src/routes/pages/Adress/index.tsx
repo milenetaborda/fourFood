@@ -2,9 +2,11 @@ import React from 'react';
 
 import { Container, Form } from './styles';
 
+import Header from '../../../components/Header';
+
 const Adress: React.FC = () => (
   <Container>
-    <div> voltar </div>
+    <Header />
 
     <Form>
       <h1>Meu endereço</h1>
