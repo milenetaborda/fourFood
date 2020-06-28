@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { Form as Unform } from '@unform/web';
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.div`
+export const Form = styled(Unform)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +25,7 @@ export const Form = styled.div`
     font-weight: 400;
   }
 
-  input {
+  Input {
     width: 328px;
     height: 56px;
     padding: 19px 48px 19px 16px;
