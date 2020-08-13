@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { useField } from '@unform/core';
-import { InpuSignup } from '../../models/dataForm';
 
-function Input({ name, ...rest }: InpuSignup): JSX.Element {
+import { useField } from '@unform/core';
+import { InputSignup } from '../../models/dataForm';
+
+function Input({ name, ...rest }: InputSignup): JSX.Element {
   const inputRef = useRef(null);
-  const { fieldName, registerField, error } = useField(name);
+  const { fieldName, registerField, error, clearError } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -16,7 +17,7 @@ function Input({ name, ...rest }: InpuSignup): JSX.Element {
 
   return (
     <div>
-      <input ref={inputRef} {...rest} />
+      <input ref={inputRef} onFocus={clearError} {...rest}  />
       {error && <span>{error}</span>}
     </div>
   );

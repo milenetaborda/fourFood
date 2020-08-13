@@ -1,21 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import React, { useRef } from 'react';
 import * as Yup from 'yup';
-import { Container, Form } from './styles';
 
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../components/Header';
 import Input from '../../../container/Input/input';
-import { dataForm, InpuSignup } from '../../../models/dataForm';
+import { dataForm, InputSignup } from '../../../models/dataForm';
+import { UserSignup } from '../../../models/userAction';
+import { signup } from '../../../store/modules/UserStore/actions';
 
+import { Container, Form } from './styles';
 import Logo from '../../../assets/logo-future-eats-invert.svg';
 
 const Signup: React.FC = () => {
   const formRef = useRef<any>(null);
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (data: InpuSignup): Promise<void> => {
+  const handleSubmit = async (data: UserSignup): Promise<void> => {
     try {
-      // Não está retornando o erro do required
       const schema = Yup.object().shape({
         name: Yup.string().required('O nome é obrigatório'),
         email: Yup.string()
@@ -30,8 +32,18 @@ const Signup: React.FC = () => {
         abortEarly: false,
       });
 
-      console.log(data);
+      //Não está mandando para o axios
+      dispatch(
+        signup({
+          name: data.name,
+          email: data.email,
+          cpf: data.cpf,
+          password: data.password,
+        }),
+      );
+
       formRef.current.setErrors({});
+
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages: any = {};

@@ -31,8 +31,13 @@ export const dataForm: any = [
   },
 ];
 
-export interface InpuSignup {
+export interface InputSignup {
   name: string;
   type: string;
   placeholder: string;
+}
+
+export interface InputLogin {
+  email: string;
+  password: string
 }
