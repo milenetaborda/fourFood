@@ -8,11 +8,14 @@ import Input from '../../../container/Input/input';
 import { dataForm, InputSignup } from '../../../models/dataForm';
 import { UserSignup } from '../../../models/userAction';
 import { signup } from '../../../store/modules/UserStore/actions';
+import { useHistory} from 'react-router-dom'
 
 import { Container, Form } from './styles';
 import Logo from '../../../assets/logo-future-eats-invert.svg';
 
+
 const Signup: React.FC = () => {
+  const history = useHistory();
   const formRef = useRef<any>(null);
   const dispatch = useDispatch();
 
@@ -32,14 +35,13 @@ const Signup: React.FC = () => {
         abortEarly: false,
       });
 
-      //Não está mandando para o axios
       dispatch(
         signup({
           name: data.name,
           email: data.email,
           cpf: data.cpf,
           password: data.password,
-        }),
+        }, history)
       );
 
       formRef.current.setErrors({});
