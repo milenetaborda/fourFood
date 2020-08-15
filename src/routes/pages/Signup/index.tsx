@@ -1,15 +1,13 @@
 
 import React, { useRef } from 'react';
 import * as Yup from 'yup';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Header from '../../../components/Header';
 import Input from '../../../container/Input/input';
-import { dataForm, InputSignup } from '../../../models/dataForm';
+import { dataForm } from '../../../models/dataForm';
 import { UserSignup } from '../../../models/userAction';
 import { signup } from '../../../store/modules/UserStore/actions';
 import { useHistory} from 'react-router-dom'
-
 import { Container, Form } from './styles';
 import Logo from '../../../assets/logo-future-eats-invert.svg';
 

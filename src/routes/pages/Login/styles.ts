@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { Form as Unform } from '@unform/web';
 
 export const Container = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.div`
+export const Form = styled(Unform)`
   display: flex;
   flex-direction: column;
   align-items: center;
