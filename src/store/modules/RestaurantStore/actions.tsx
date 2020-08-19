@@ -3,12 +3,21 @@ import { useDispatch } from 'react-redux';
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA";
 
-export function setRestaurants (restaurants: any): any {
+export const setRestaurants = (restaurants: any) => {
  return {
   type: 'SET_RESTAURANTS',
   restaurants
  }
-}
+};
+
+export const setFilter = (category: string) => {
+  return {
+    type: 'SET_FILTER',
+    category
+   }
+};
+
+
 export const getRestaurants = () => async (dispatch: any) => {
 
   const token = localStorage.getItem("token");

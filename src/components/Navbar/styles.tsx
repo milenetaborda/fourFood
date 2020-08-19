@@ -1,15 +1,17 @@
 import styled from 'styled-components';
+import { Props, PropsWithChildren } from 'react';
 
 export const Container = styled.div`
   display: flex;
   width: 20.5rem;
+  height: 65px;
   align-items: center;
   text-decoration: none;
   white-space: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
 
   ::-webkit-scrollbar {
-    width: 2px;
     height: 4px;
   }
 
@@ -17,16 +19,13 @@ export const Container = styled.div`
   background: #b8b8b8;
   border-radius: 4px;
   }
-
-a {
-  margin-right: 15px;
-  padding: 1rem 0.5rem;
-
-  :hover {
-    /* Rever isso */
-  background-color: ${(props : any)=> props.selected ? "var(--lipstick)" : "black"}
-  }
-}
-
-
 `;
+
+
+export const Button = styled.button `
+  margin-right: 15px;
+  padding: 0.5rem 1rem 0.5rem 0;
+  background: none;
+  border: none;
+  color:  ${(props : any ) => props.isSelected === false ? "var(--lipstick)" : "black"};
+`

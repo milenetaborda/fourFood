@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from './styles';
 import Header from '../../../components/Header';
 import Navbar from '../../../components/Navbar';
-import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getRestaurants } from '../../../store/modules/RestaurantStore/actions';
+import { Restaurants } from '../../../models/restaurant.interface';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,12 @@ const Home: React.FC = () => {
     dispatch(getRestaurants());
   }, [dispatch])
 
-  const restaurant = useSelector((state: any) => state.restaurants.allRestaurants)
-  console.log(restaurant)
+  const allRestaurants = useSelector((state: any) => state.restaurants.allRestaurants)
+  const filterRestaurants = useSelector((state: any) => state.restaurants.filter)
+
+  const filterRestaurantsByCategory =
+    filterRestaurants === "all" ? allRestaurants : allRestaurants?.filter((rest: any) => rest.category === filterRestaurants);
+
   return (
     <Container>
       <h1>Ifuture</h1>
@@ -22,10 +27,9 @@ const Home: React.FC = () => {
       <input placeholder="Restaurante" ></input>
 
       <Navbar />
-
       <ul>
-        {restaurant?.map((rest: any) => (
-          <li>
+        {filterRestaurantsByCategory?.map((rest: any) => (
+          <li key={rest.id}>
             <img src={rest.logoUrl} alt={rest.name} />
             <strong>{rest.name}</strong>
             <span>{rest.deliveryTime} min</span>
@@ -37,9 +41,5 @@ const Home: React.FC = () => {
     </Container >
   );
 }
-
-const mapStateToProps = (state: any) => ({
-  restaurants: state.restaurants
-})
 
 export default Home;
