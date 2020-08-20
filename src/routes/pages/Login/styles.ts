@@ -41,7 +41,7 @@ export const Form = styled(Unform)`
   }
 
   input {
-    width: 80vw;
+    width: 40em;
     height: 56px;
     padding: 19px 48px 19px 16px;
     margin: 8px auto;
@@ -55,7 +55,7 @@ export const Form = styled(Unform)`
   }
 
   button {
-    width: 80vw;
+    width: 40em;
     height: 42px;
     border-radius: 2px;
     margin: 8px auto 12px;
@@ -68,9 +68,9 @@ export const Form = styled(Unform)`
     }
   }
 
-  @media screen and (min-width: 670px) {
+  @media screen and (max-width: 670px) {
     input, button {
-      width: 80vw;
+      width: 90vw;
   }
 }
 `;
