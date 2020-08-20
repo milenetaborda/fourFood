@@ -6,9 +6,11 @@ import { setFilter } from '../../store/modules/RestaurantStore/actions';
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
   const [category, setCategory] = useState<string>('all');
+  const [selected, setSelected] = useState(true);
 
   const setFilterByCategory = (tag: string) => {
     setCategory(tag);
+    setSelected(!selected);
   };
 
   dispatch(
@@ -17,7 +19,7 @@ const Navbar: React.FC = () => {
 
   return (
     <Container>
-      <Button  onClick={() => setFilterByCategory('all')}  >Todos</Button>
+      <Button  onClick={() => setFilterByCategory('all')} >Todos</Button>
       <Button onClick={() => setFilterByCategory('Hamburguer')}>Burger</Button>
       <Button onClick={() => setFilterByCategory('Árabe')}>Árabe</Button>
       <Button onClick={() => setFilterByCategory('Asiática')}>Asiática</Button>

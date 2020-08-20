@@ -5,6 +5,7 @@ import Navbar from '../../../components/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRestaurants } from '../../../store/modules/RestaurantStore/actions';
 import { Restaurants } from '../../../models/restaurant.interface';
+import Body from '../../../components/Body';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,13 +14,14 @@ const Home: React.FC = () => {
     dispatch(getRestaurants());
   }, [dispatch])
 
-  const allRestaurants = useSelector((state: any) => state.restaurants.allRestaurants)
-  const filterRestaurants = useSelector((state: any) => state.restaurants.filter)
+  const allRestaurants = useSelector((state: any) => state.restaurants.allRestaurants);
+  const filterRestaurants = useSelector((state: any) => state.restaurants.filter);
 
   const filterRestaurantsByCategory =
-    filterRestaurants === "all" ? allRestaurants : allRestaurants?.filter((rest: any) => rest.category === filterRestaurants);
+    filterRestaurants === "all" ? allRestaurants : allRestaurants?.filter((rest: Restaurants) => rest.category === filterRestaurants);
 
   return (
+    <>
     <Container>
       <h1>Ifuture</h1>
 
@@ -39,6 +41,8 @@ const Home: React.FC = () => {
       </ul>
 
     </Container >
+    <Body />
+    </>
   );
 }
 
