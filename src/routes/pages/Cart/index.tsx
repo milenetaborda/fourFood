@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../../../components/Footer'
 import Header from '../../../components/Header';
-import {  Container } from './styles'
+import { Container } from './styles'
 
 const Cart: React.FC = () => {
   return (
@@ -10,17 +10,33 @@ const Cart: React.FC = () => {
       <Header />
 
       <aside>
-          <span>Endereço de entrega</span>
-          <p>Rua Alessandra Vieira, 42 - Santana</p>
-        </aside>
+        <span>Endereço de entrega</span>
+        <p>Rua Alessandra Vieira, 42 - Santana</p>
+      </aside>
 
-        <p>Carrinho vazio</p>
+      <p>Carrinho vazio</p>
 
-        <h2>Subtotal</h2>
-        <p>Forma de pagamento</p>
+      <h2>Subtotal</h2>
+      <p>Forma de pagamento</p>
+      <hr />
 
-        <hr/>
+      <div className="box">
+        <ul>
+          <li>
+            <input type="radio" id="s-option" name="selector" />
+            <label htmlFor="s-option">Dinheiro</label>
+            <div className="check"></div>
+          </li>
 
+          <li>
+            <input type="radio" id="d-option" name="selector" />
+            <label htmlFor="d-option">Cartão de crédito</label>
+            <div className="check"><div className="inside"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <button >Confirmar</button>
 
       {/* <Footer /> */}
     </Container>
