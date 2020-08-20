@@ -7,7 +7,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Home from '@material-ui/icons/Home';
 import { BottomByNavigation } from './styles';
 
-const  Body: React.FC = () => {
+const  Footer: React.FC = () => {
   const [value, setValue] = React.useState(0);
   const history = useHistory();
 
@@ -29,4 +29,4 @@ const  Body: React.FC = () => {
   );
 }
 
-export default Body;
+export default Footer;

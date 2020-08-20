@@ -5,7 +5,7 @@ import Navbar from '../../../components/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRestaurants } from '../../../store/modules/RestaurantStore/actions';
 import { Restaurants } from '../../../models/restaurant.interface';
-import Body from '../../../components/Body';
+import Footer from '../../../components/Footer';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
       </ul>
 
     </Container >
-    <Body />
+    <Footer />
     </>
   );
 }
