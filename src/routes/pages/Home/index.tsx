@@ -3,12 +3,18 @@ import { Container } from './styles';
 import Header from '../../../components/Header';
 import Navbar from '../../../components/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
-import { getRestaurants } from '../../../store/modules/RestaurantStore/actions';
+import { getRestaurants, getRestaurantDetail } from '../../../store/modules/RestaurantStore/actions';
 import { Restaurants } from '../../../models/restaurant.interface';
 import Footer from '../../../components/Footer';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+
+  const onSubmitRestaurantDetail = (id: string) => {
+    dispatch(
+      getRestaurantDetail(id)
+    );
+  };
 
   useEffect(() => {
     dispatch(getRestaurants());
@@ -31,7 +37,7 @@ const Home: React.FC = () => {
       <Navbar />
       <ul>
         {filterRestaurantsByCategory?.map((rest: any) => (
-          <li key={rest.id}>
+          <li key={rest.id} onClick={() => onSubmitRestaurantDetail(rest.id)}>
             <img src={rest.logoUrl} alt={rest.name} />
             <strong>{rest.name}</strong>
             <span>{rest.deliveryTime} min</span>

@@ -44,6 +44,7 @@ export const Container = styled.div`
       border: solid 1px #b8b8b8;
       margin: 0.5rem 0;
       list-style-type: none;
+      cursor: pointer;
 
     img {
       border-radius: 8px;

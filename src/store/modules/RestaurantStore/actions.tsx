@@ -35,3 +35,19 @@ try{
   alert("deu erro")
 }
 }
+
+export const getRestaurantDetail  =  (restaurantId: string) => async () => {
+  const token = localStorage.getItem("token");
+
+  try{
+    const response = await axios.get(`${baseURL}/restaurants/${restaurantId}`, {
+      headers: {
+        auth: token
+      }
+    });
+
+    console.log(response.data);
+  }catch {
+    console.log("deu erro")
+  };
+};

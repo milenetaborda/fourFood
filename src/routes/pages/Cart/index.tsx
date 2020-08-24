@@ -10,13 +10,17 @@ const Cart: React.FC = () => {
       <Header />
 
       <aside>
+
         <span>Endereço de entrega</span>
         <p>Rua Alessandra Vieira, 42 - Santana</p>
+
+
       </aside>
 
       <p>Carrinho vazio</p>
 
-      <h2>Subtotal</h2>
+      <h2>Subtotal</h2> <p>R$0,00</p>
+
       <p>Forma de pagamento</p>
       <hr />
 
