@@ -3,17 +3,19 @@ import { Container } from './styles';
 import Header from '../../../components/Header';
 import Navbar from '../../../components/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
-import { getRestaurants, getRestaurantDetail } from '../../../store/modules/RestaurantStore/actions';
+import { getRestaurants, getRestaurantDetail, setFilter } from '../../../store/modules/RestaurantStore/actions';
 import { Restaurants } from '../../../models/restaurant.interface';
 import Footer from '../../../components/Footer';
+import {useHistory} from 'react-router-dom';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSubmitRestaurantDetail = (id: string) => {
     dispatch(
-      getRestaurantDetail(id)
-    );
+      getRestaurantDetail(id, history)
+    )
   };
 
   useEffect(() => {

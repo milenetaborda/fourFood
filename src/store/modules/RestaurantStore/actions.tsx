@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA";
 
@@ -16,6 +15,13 @@ export const setFilter = (category: string) => {
     category
    }
 };
+
+export const setRestaurantDetail = (restaurantId: string) => {
+  return {
+    type: 'SET_RESTAURANT_DETAIL',
+    restaurantId
+  }
+}
 
 
 export const getRestaurants = () => async (dispatch: any) => {
@@ -36,7 +42,7 @@ try{
 }
 }
 
-export const getRestaurantDetail  =  (restaurantId: string) => async () => {
+export const getRestaurantDetail  =  (restaurantId: string, history: any) => async (dispatch: any) => {
   const token = localStorage.getItem("token");
 
   try{
@@ -46,8 +52,11 @@ export const getRestaurantDetail  =  (restaurantId: string) => async () => {
       }
     });
 
-    console.log(response.data);
+   dispatch(setRestaurantDetail(response.data.restaurant));
+    history.push("/restaurant/detail");
+    //console.log(response.data.token)
+
   }catch {
-    console.log("deu erro")
+    alert("Restaurante não encontrado. Tente novamente");
   };
 };
