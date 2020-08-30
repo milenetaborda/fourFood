@@ -4,7 +4,7 @@ import Header from '../../../components/Header';
 import Navbar from '../../../components/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRestaurants, getRestaurantDetail, setFilter } from '../../../store/modules/RestaurantStore/actions';
-import { Restaurants } from '../../../models/restaurant.interface';
+import { Restaurants, RestaurantState } from '../../../models/restaurant.interface';
 import Footer from '../../../components/Footer';
 import {useHistory} from 'react-router-dom';
 

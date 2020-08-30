@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { Props, PropsWithChildren } from 'react';
 
 export const Container = styled.div`
   display: flex;
-  width: 20.5rem;
+  width: 90%;
   height: 65px;
   align-items: center;
   text-decoration: none;

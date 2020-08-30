@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { Restaurants } from '../../../models/restaurant.interface';
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodA";
 
-export const setRestaurants = (restaurants: any) => {
+export const setRestaurants = (restaurants: Restaurants) => {
  return {
   type: 'SET_RESTAURANTS',
   restaurants
@@ -38,7 +39,7 @@ try{
   dispatch(setRestaurants(response.data.restaurants));
 
 } catch(err) {
-  alert("deu erro")
+  alert("Ocorreu um erro inesperado. Tente novamente!")
 }
 }
 

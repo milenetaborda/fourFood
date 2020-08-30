@@ -1,5 +1,6 @@
+import { RestaurantState, RestaurantAction } from "../../../models/restaurant.interface";
 
-export default function restaurants(state: any[] = [], action: any): any {
+export default function restaurants(state: RestaurantState[] = [], action: RestaurantAction): any {
 
   switch (action.type) {
     case 'SET_RESTAURANTS': {

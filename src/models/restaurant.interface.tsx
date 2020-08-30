@@ -9,12 +9,14 @@ export interface Restaurants {
 };
 
 export type RestaurantAction = {
-  type: 'SET_RESTAURANTS' | 'SET_FILTER';
-  restaurants: any; // Rever isso
-  category: any;
+  type: 'SET_RESTAURANTS' | 'SET_FILTER' |  'SET_RESTAURANT_DETAIL';
+  restaurants: Restaurants;
+  category: string;
+  restaurantId: string
 };
 
 export interface RestaurantState {
   allRestaurants: Restaurants[];
   filter: string;
+  restaurantId: string;
 };
