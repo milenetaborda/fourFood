@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useField } from '@unform/core';
 import { InputSignup } from '../../models/dataForm';
 
@@ -17,7 +18,7 @@ function Input({ name, ...rest }: InputSignup): JSX.Element {
 
   return (
     <div>
-      <input ref={inputRef} onFocus={clearError} {...rest}  />
+      <input ref={inputRef} onFocus={clearError} {...rest} />
       {error && <span>{error}</span>}
     </div>
   );

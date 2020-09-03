@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Form as Unform } from '@unform/web';
 
 export const Container = styled.div`
@@ -19,7 +20,7 @@ export const Container = styled.div`
     margin: 12px auto;
 
     strong {
-     margin: 0 5px ;
+      margin: 0 5px;
       cursor: pointer;
       color: var(--lipstick);
     }
@@ -69,8 +70,9 @@ export const Form = styled(Unform)`
   }
 
   @media screen and (max-width: 670px) {
-    input, button {
+    input,
+    button {
       width: 90vw;
+    }
   }
-}
 `;

@@ -1,57 +1,76 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Container } from './styles';
 import Header from '../../../components/Header';
 import Navbar from '../../../components/Navbar';
-import { useSelector, useDispatch } from 'react-redux';
-import { getRestaurants, getRestaurantDetail, setFilter } from '../../../store/modules/RestaurantStore/actions';
-import { Restaurants, RestaurantState } from '../../../models/restaurant.interface';
+import {
+  getRestaurants,
+  getRestaurantDetail,
+  setFilter,
+} from '../../../store/modules/RestaurantStore/actions';
+import {
+  Restaurants,
+  RestaurantState,
+} from '../../../models/restaurant.interface';
 import Footer from '../../../components/Footer';
-import {useHistory} from 'react-router-dom';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const onSubmitRestaurantDetail = (id: string) => {
-    dispatch(
-      getRestaurantDetail(id, history)
-    )
+    dispatch(getRestaurantDetail(id, history));
   };
 
   useEffect(() => {
     dispatch(getRestaurants());
-  }, [dispatch])
+  }, [dispatch]);
 
-  const allRestaurants = useSelector((state: any) => state.restaurants.allRestaurants);
-  const filterRestaurants = useSelector((state: any) => state.restaurants.filter);
+  const allRestaurants = useSelector(
+    (state: any) => state.restaurants.allRestaurants,
+  );
+  const filterRestaurants = useSelector(
+    (state: any) => state.restaurants.filter,
+  );
 
   const filterRestaurantsByCategory =
-    filterRestaurants === "all" ? allRestaurants : allRestaurants?.filter((rest: Restaurants) => rest.category === filterRestaurants);
+    filterRestaurants === 'all'
+      ? allRestaurants
+      : allRestaurants?.filter(
+          (rest: Restaurants) => rest.category === filterRestaurants,
+        );
 
   return (
     <>
-    <Container>
-      <h1>Ifuture</h1>
+      <Container>
+        <h1>Ifuture</h1>
 
-      <Header />
-      <input placeholder="Restaurante" ></input>
+        <Header />
+        <input placeholder="Restaurante" />
 
-      <Navbar />
-      <ul>
-        {filterRestaurantsByCategory?.map((rest: any) => (
-          <li key={rest.id} onClick={() => onSubmitRestaurantDetail(rest.id)}>
-            <img src={rest.logoUrl} alt={rest.name} />
-            <strong>{rest.name}</strong>
-            <span>{rest.deliveryTime} min</span>
-            <span>Frete: R${rest.shipping}</span>
-          </li>
-        ))}
-      </ul>
-
-    </Container >
-    <Footer />
+        <Navbar />
+        <ul>
+          {filterRestaurantsByCategory?.map((rest: any) => (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+            <li key={rest.id} onClick={() => onSubmitRestaurantDetail(rest.id)}>
+              <img src={rest.logoUrl} alt={rest.name} />
+              <strong>{rest.name}</strong>
+              <span>{rest.deliveryTime} min</span>
+              <span>
+                Frete: R$
+                {rest.shipping}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </Container>
+      <Footer />
     </>
   );
-}
+};
 
 export default Home;

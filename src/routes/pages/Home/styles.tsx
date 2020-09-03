@@ -8,16 +8,16 @@ export const Container = styled.div`
   white-space: nowrap;
 
   ::-webkit-scrollbar {
-	width: 4px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-thumb {
-  background: #b8b8b8;
-  border-radius: 4px;
+    background: #b8b8b8;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-track {
-  background: #eee;
+    background: #eee;
   }
 
   h1 {
@@ -37,7 +37,7 @@ export const Container = styled.div`
     height: 55vh;
     font-family: 'Roboto', sans-serif;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(21.5rem, 1fr) );
+    grid-template-columns: repeat(auto-fit, minmax(21.5rem, 1fr));
     grid-gap: 10px;
 
     li {
@@ -48,24 +48,23 @@ export const Container = styled.div`
       cursor: pointer;
 
       img {
-      border-radius: 8px;
-      width: 100%;
-      height: 7.5rem;
-      background-size: contain;
-      background-size: 100%;
+        border-radius: 8px;
+        width: 100%;
+        height: 7.5rem;
+        background-size: contain;
+        background-size: 100%;
       }
 
       strong {
-      display: block;
-      margin: 0.75rem 1rem;
-      color: var(--lipstick);
+        display: block;
+        margin: 0.75rem 1rem;
+        color: var(--lipstick);
       }
 
-     span {
-      margin: 0.75rem 1rem;
-      color: #b8b8b8;
+      span {
+        margin: 0.75rem 1rem;
+        color: #b8b8b8;
       }
     }
-
   }
 `;

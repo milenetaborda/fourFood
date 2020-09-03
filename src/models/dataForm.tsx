@@ -39,5 +39,5 @@ export interface InputSignup {
 
 export interface InputLogin {
   email: string;
-  password: string
+  password: string;
 }

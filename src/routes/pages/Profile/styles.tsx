@@ -6,9 +6,8 @@ export const Container = styled.div`
   border: 1px solid #eeeeee;
 
   .WrapperInfo {
-
     div {
-      padding: 1rem ;
+      padding: 1rem;
     }
 
     aside {
@@ -16,7 +15,7 @@ export const Container = styled.div`
       height: 100%;
       background-color: #eeeeee;
       line-height: 1.5;
-      padding: 0.5rem 1rem ;
+      padding: 0.5rem 1rem;
       margin-bottom: 1rem;
 
       span {
@@ -25,10 +24,10 @@ export const Container = styled.div`
     }
 
     h2 {
-      padding: 0 1rem ;
+      padding: 0 1rem;
     }
 
-    >p {
+    > p {
       text-align: center;
       padding: 5vh 5vw;
     }
@@ -40,6 +39,6 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 840px) {
-      width: 90vw;
-  };
+    width: 90vw;
+  }
 `;

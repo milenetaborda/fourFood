@@ -18,10 +18,10 @@ export interface UserSignup {
 }
 
 export interface UserAddress {
-  street: string,
-  number: string,
-  complement?: string,
-  neighbourhood: string,
-  city: string,
-  state: string
+  street: string;
+  number: string;
+  complement?: string;
+  neighbourhood: string;
+  city: string;
+  state: string;
 }

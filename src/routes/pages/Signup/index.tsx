@@ -1,16 +1,14 @@
-
 import React, { useRef } from 'react';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Header from '../../../components/Header';
 import Input from '../../../container/Input/input';
 import { dataForm } from '../../../models/dataForm';
 import { UserSignup } from '../../../models/userAction';
 import { signup } from '../../../store/modules/UserStore/actions';
-import { useHistory} from 'react-router-dom'
 import { Container, Form } from './styles';
 import Logo from '../../../assets/logo-future-eats-invert.svg';
-
 
 const Signup: React.FC = () => {
   const history = useHistory();
@@ -34,16 +32,18 @@ const Signup: React.FC = () => {
       });
 
       dispatch(
-        signup({
-          name: data.name,
-          email: data.email,
-          cpf: data.cpf,
-          password: data.password,
-        }, history)
+        signup(
+          {
+            name: data.name,
+            email: data.email,
+            cpf: data.cpf,
+            password: data.password,
+          },
+          history,
+        ),
       );
 
       formRef.current.setErrors({});
-
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages: any = {};

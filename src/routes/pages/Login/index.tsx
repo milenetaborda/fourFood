@@ -1,11 +1,14 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef } from 'react';
 import * as Yup from 'yup';
-import { Container, Form } from './styles';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Container, Form } from './styles';
 import Input from '../../../container/Input/input';
 import Logo from '../../../assets/logo-future-eats-invert.svg';
 import { UserSignup } from '../../../models/userAction';
-import { useDispatch } from 'react-redux';
 import { login } from '../../../store/modules/UserStore/actions';
 
 const Login: React.FC = () => {
@@ -14,11 +17,11 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const goToSignup = () => {
-    history.replace("/signup");
-  }
+    history.replace('/signup');
+  };
 
   const handleSubmit = async (data: UserSignup): Promise<void> => {
-    try{
+    try {
       const schema = Yup.object().shape({
         email: Yup.string()
           .email('Digite um e-mail válido')
@@ -33,16 +36,18 @@ const Login: React.FC = () => {
       });
 
       dispatch(
-        login({
-          email: data.email,
-          password: data.password
-        }, history)
-      )
+        login(
+          {
+            email: data.email,
+            password: data.password,
+          },
+          history,
+        ),
+      );
 
       formRef.current.setErrors({});
-
-    }catch(err) {
-      if(err instanceof Yup.ValidationError) {
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
         const errorMessages: any = {};
 
         err.inner.forEach(error => {
@@ -61,12 +66,16 @@ const Login: React.FC = () => {
       <Form onSubmit={handleSubmit} ref={formRef}>
         <h1>Entrar</h1>
         <Input type="text" placeholder="email@email.com" name="email" />
-        <Input type="password" placeholder="Mínimo 6 caracteres" name="password" />
+        <Input
+          type="password"
+          placeholder="Mínimo 6 caracteres"
+          name="password"
+        />
         <button type="submit">Entrar</button>
       </Form>
       <span>
         Não possui cadastro?
-      <strong onClick={goToSignup}>Clique aqui</strong>
+        <strong onClick={goToSignup}>Clique aqui</strong>
       </span>
     </Container>
   );

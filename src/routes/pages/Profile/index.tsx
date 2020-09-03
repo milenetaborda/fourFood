@@ -1,8 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Header from '../../../components/Header';
 import { Container } from './styles';
-
-
 
 const Profile: React.FC = () => {
   return (
@@ -12,9 +10,9 @@ const Profile: React.FC = () => {
 
       <div className="WrapperInfo">
         <div>
-        <p>Bruna Oliveira</p>
-        <p>bruna_o@gmail.com</p>
-        <p>333.333.333-33</p>
+          <p>Bruna Oliveira</p>
+          <p>bruna_o@gmail.com</p>
+          <p>333.333.333-33</p>
         </div>
 
         <aside>
@@ -23,12 +21,12 @@ const Profile: React.FC = () => {
         </aside>
 
         <h2>Histórico de pedidos</h2>
-        <hr/>
+        <hr />
 
         <p>Você não realizou nenhum pedido</p>
       </div>
     </Container>
-  )
-}
+  );
+};
 
 export default Profile;

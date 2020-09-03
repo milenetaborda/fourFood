@@ -1,21 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Container } from './styles';
 import { getRestaurantDetail } from '../../../store/modules/RestaurantStore/actions';
+import Header from '../../../components/Header';
 
 const Restaurant: React.FC = () => {
-  const restaurantById = useSelector((state: any) => state.restaurants.restaurantId);
+  const restaurantDetails = useSelector(
+    (state: any) => state.restaurants.restaurantId,
+  );
+  const [restaurantById, setRestaurantById] = useState(restaurantDetails);
 
-  const filterRestaurantsByCategory =
-  restaurantById.products?.filter((rest: any) => rest.category === "" );
+  // Milene - favor gravar as informações para quando dar f5 as informações ficarem na tela
 
-  console.log(filterRestaurantsByCategory)
+  if (!restaurantDetails) {
+    return <div>Carregando ...</div>;
+  }
 
   return (
-
     <Container>
+      <h1>Restaurante</h1>
+      <Header />
       <section>
-        <img src={restaurantById.logoUrl} />
+        <img alt="Logo Restaurante" src={restaurantById.logoUrl} />
         <h2>{restaurantById.name}</h2>
         <p>{restaurantById.category}</p>
         <p>{restaurantById.deliveryTime}</p>
@@ -24,22 +30,9 @@ const Restaurant: React.FC = () => {
       </section>
       <ul>
         <h1>Principais</h1>
-        {filterRestaurantsByCategory.map((product: any) => (
-          <li key={product.id}>
-            <img src={product.photoUrl} />
-            <div>
-              <p>{product.name}</p>
-              <span>{product.description}</span>
-              <footer>
-              <strong>R$ {product.price}</strong>
-              <button>Adicionar</button>
-              </footer>
-            </div>
-          </li>
-        ))}
       </ul>
     </Container>
-  )
-}
+  );
+};
 
 export default Restaurant;
