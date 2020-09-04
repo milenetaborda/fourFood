@@ -1,18 +1,26 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container } from './styles';
 import { getRestaurantDetail } from '../../../store/modules/RestaurantStore/actions';
 import Header from '../../../components/Header';
 
 const Restaurant: React.FC = () => {
-  const restaurantDetails = useSelector(
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const restaurant = useSelector(
     (state: any) => state.restaurants.restaurantId,
   );
-  const [restaurantById, setRestaurantById] = useState(restaurantDetails);
 
-  // Milene - favor gravar as informações para quando dar f5 as informações ficarem na tela
+  useEffect(() => {
+    dispatch(getRestaurantDetail(id, history));
+  }, []);
 
-  if (!restaurantDetails) {
+  if (!restaurant) {
     return <div>Carregando ...</div>;
   }
 
@@ -21,12 +29,12 @@ const Restaurant: React.FC = () => {
       <h1>Restaurante</h1>
       <Header />
       <section>
-        <img alt="Logo Restaurante" src={restaurantById.logoUrl} />
-        <h2>{restaurantById.name}</h2>
-        <p>{restaurantById.category}</p>
-        <p>{restaurantById.deliveryTime}</p>
-        <p>{restaurantById.shipping}</p>
-        <p>{restaurantById.address}</p>
+        <img alt="Logo Restaurante" src={restaurant.logoUrl} />
+        <h2>{restaurant.name}</h2>
+        <p>{restaurant.category}</p>
+        <p>{restaurant.deliveryTime}</p>
+        <p>{restaurant.shipping}</p>
+        <p>{restaurant.address}</p>
       </section>
       <ul>
         <h1>Principais</h1>

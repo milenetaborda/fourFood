@@ -17,7 +17,7 @@ const Routes: React.FC = () => (
     <Route path="/home" component={Home} />
     <Route path="/profile" component={Profile} />
     <Route path="/cart" component={Cart} />
-    <Route path="/restaurant/detail" component={Restaurant} />
+    <Route path="/restaurant/detail/:id" component={Restaurant} />
   </Switch>
 );
 

@@ -7,16 +7,24 @@ export const Container = styled.div`
 
   .WrapperInfo {
     div {
+      display: flex;
+      justify-content: space-between;
       padding: 1rem;
     }
 
     aside {
+      display: flex;
+      justify-content: space-between;
       width: 100%;
       height: 100%;
       background-color: #eeeeee;
       line-height: 1.5;
       padding: 0.5rem 1rem;
       margin-bottom: 1rem;
+
+      > div {
+        display: block;
+      }
 
       span {
         color: #b8b8b8;

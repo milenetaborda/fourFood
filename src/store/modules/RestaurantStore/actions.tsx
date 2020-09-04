@@ -57,7 +57,7 @@ export const getRestaurantDetail = (
     });
 
     dispatch(setRestaurantDetail(response.data.restaurant));
-    history.push('/restaurant/detail');
+    history.push(`/restaurant/detail/${restaurantId}`);
   } catch {
     alert('Restaurante não encontrado. Tente novamente');
   }
