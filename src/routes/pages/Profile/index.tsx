@@ -9,7 +9,7 @@ const Profile: React.FC = () => {
   const history = useHistory();
 
   const goToEditProfile = () => {
-    history.replace('/');
+    history.replace('/profile/editProfile');
   };
 
   const goToEditAddress = () => {

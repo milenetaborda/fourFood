@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container } from './styles';
@@ -9,19 +11,13 @@ import Navbar from '../../../components/Navbar';
 import {
   getRestaurants,
   getRestaurantDetail,
-  setFilter,
 } from '../../../store/modules/RestaurantStore/actions';
-import {
-  Restaurants,
-  RestaurantState,
-} from '../../../models/restaurant.interface';
-import Footer from '../../../components/Footer';
+import { Restaurants } from '../../../models/restaurant.interface';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const onSubmitRestaurantDetail = (id: string) => {
     dispatch(getRestaurantDetail(id, history));
   };
@@ -33,6 +29,7 @@ const Home: React.FC = () => {
   const allRestaurants = useSelector(
     (state: any) => state.restaurants.allRestaurants,
   );
+
   const filterRestaurants = useSelector(
     (state: any) => state.restaurants.filter,
   );
@@ -45,31 +42,30 @@ const Home: React.FC = () => {
         );
 
   return (
-    <>
-      <Container>
-        <h1>Ifuture</h1>
+    <Container>
+      <h1>Ifuture</h1>
 
-        <Header />
-        <input placeholder="Restaurante" />
+      <Header />
+      <input placeholder="Restaurante" />
 
-        <Navbar />
-        <ul>
-          {filterRestaurantsByCategory?.map((rest: any) => (
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-            <li key={rest.id} onClick={() => onSubmitRestaurantDetail(rest.id)}>
-              <img src={rest.logoUrl} alt={rest.name} />
-              <strong>{rest.name}</strong>
-              <span>{rest.deliveryTime} min</span>
-              <span>
-                Frete: R$
-                {rest.shipping}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </Container>
-      <Footer />
-    </>
+      <Navbar />
+      <ul>
+        {filterRestaurantsByCategory?.map((rest: any) => (
+          <li key={rest.id} onClick={() => onSubmitRestaurantDetail(rest.id)}>
+            <img src={rest.logoUrl} alt={rest.name} />
+            <strong>{rest.name}</strong>
+            <span>
+              {rest.deliveryTime}
+              min
+            </span>
+            <span>
+              Frete: R$
+              {rest.shipping}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </Container>
   );
 };
 

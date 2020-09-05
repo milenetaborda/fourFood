@@ -17,6 +17,12 @@ export interface UserSignup {
   cpf: string;
 }
 
+export interface UserUpdateForm {
+  name: string;
+  email: string;
+  cpf: string;
+}
+
 export interface UserAddress {
   street: string;
   number: string;

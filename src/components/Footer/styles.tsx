@@ -5,7 +5,7 @@ export const BottomByNavigation = styled(BottomNavigation)`
   width: 20.5rem;
   margin: 0 auto;
 
-  .MuiSvgIcon-root-10{
+  .MuiSvgIcon-root-10 {
     height: 1.3em;
     width: 3em;
   }
@@ -13,4 +13,4 @@ export const BottomByNavigation = styled(BottomNavigation)`
   .MuiBottomNavigationAction-root-2.MuiBottomNavigationAction-selected-3 {
     color: var(--lipstick);
   }
-` ;
+`;

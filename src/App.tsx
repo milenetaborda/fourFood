@@ -6,11 +6,13 @@ import Routes from './routes';
 import store from './store';
 
 import GlobalStyle from './styles/global';
+import Footer from './components/Footer';
 
 const App: React.FC = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes />
+      <Footer />
     </BrowserRouter>
     <GlobalStyle />
   </Provider>
