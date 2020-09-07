@@ -1,14 +1,14 @@
 /* eslint-disable import/no-unresolved */
 import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Container, Form } from './styles';
 import { UserUpdateForm } from '../../../models/userAction';
 import Header from '../../../components/Header';
+import Input from '../../../container/Input/input';
+import { updateProfile } from '../../../store/modules/UserStore/actions';
 
 const EditProfile: React.FC = () => {
-  const history = useHistory();
   const formRef = useRef<any>(null);
   const dispatch = useDispatch();
 
@@ -26,28 +26,36 @@ const EditProfile: React.FC = () => {
         abortEarly: false,
       });
 
+      dispatch(
+        updateProfile({
+          name: data.name,
+          email: data.email,
+          cpf: data.cpf,
+        }),
+      );
+
       formRef.current.setErrors({});
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
-        const errorMessage: any = {};
+        const errorMessages: any = {};
 
         err.inner.forEach(error => {
-          errorMessage[error.path] = error.message;
+          errorMessages[error.path] = error.message;
         });
 
-        formRef.current.setErrors(errorMessage);
+        formRef.current.setErrors(errorMessages);
       }
     }
   };
 
   return (
     <Container>
+      <h1>Editar</h1>
+      <Header />
       <Form onSubmit={handleSubmit} ref={formRef}>
-        <h1>Editar</h1>
-        <Header />
-        <input name="name" type="text" placeholder="Nome e sobrenome" />
-        <input name="email" type="email" placeholder="email@email.com" />
-        <input name="cpf" type="text" placeholder="000.000.000-00" />
+        <Input name="name" type="text" placeholder="Nome e sobrenome" />
+        <Input name="email" type="email" placeholder="email@email.com" />
+        <Input name="cpf" type="text" placeholder="000.000.000-00" />
         <button type="submit">Editar</button>
       </Form>
     </Container>

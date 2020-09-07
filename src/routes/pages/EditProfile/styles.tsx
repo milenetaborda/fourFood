@@ -7,12 +7,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const Form = styled(Unform)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   h1 {
     margin: 12px 32px 0;
@@ -21,6 +15,12 @@ export const Form = styled(Unform)`
     padding: 12px;
     font-weight: 400;
   }
+`;
+
+export const Form = styled(Unform)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   Input {
     width: 328px;
