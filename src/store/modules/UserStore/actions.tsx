@@ -2,22 +2,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import axios from 'axios';
-import {
-  UserInfo,
-  UserLogin,
-  UserSignup,
-  USER_INFO,
-  UserAddress,
-  UserUpdateForm,
-} from '../../../models/userAction';
+import { userInfo } from 'os';
+import { UserLogin, UserSignup, UserAddress } from '../../../models/userAction';
 import api from '../../../services/api';
-
-export function setUserInfo(info: string): UserInfo {
-  return {
-    type: USER_INFO,
-    info,
-  };
-}
 
 export const login = (
   { email, password }: UserLogin,
@@ -89,34 +76,6 @@ export const addAddress = (body: UserAddress, history: any) => async () => {
     localStorage.setItem('token', response.data.token);
     history.replace('/home');
   } catch (err) {
-    alert('Ocorreu um erro inesperado, tente novamente!');
-  }
-};
-
-export const updateProfile = ({
-  name,
-  email,
-  cpf,
-}: UserUpdateForm) => async () => {
-  try {
-    const body = {
-      name,
-      email,
-      cpf,
-    };
-
-    const response = await axios.put(
-      'https://us-central1-missao-newton.cloudfunctions.net/FourFoodA/profile',
-      body,
-      {
-        headers: {
-          auth: localStorage.getItem('token'),
-        },
-      },
-    );
-
-    setUserInfo(response.data.user);
-  } catch {
     alert('Ocorreu um erro inesperado, tente novamente!');
   }
 };

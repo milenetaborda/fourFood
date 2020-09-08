@@ -1,20 +1,29 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsPencil } from 'react-icons/bs';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../components/Header';
 import { Container } from './styles';
+import { getProfile } from '../../../store/modules/UserProfile/actions';
 
 const Profile: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const goToEditProfile = () => {
     history.replace('/profile/editProfile');
   };
 
-  const goToEditAddress = () => {
-    history.replace('/');
-  };
+  // const goToEditAddress = () => {
+  //   history.replace('/');
+  // };
+
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
+
+  const updatedProfile = useSelector((state: any) => state.user.updateProfile);
 
   return (
     <Container>
@@ -24,9 +33,13 @@ const Profile: React.FC = () => {
       <div className="WrapperInfo">
         <div>
           <main>
-            <p>Bruna Oliveira</p>
-            <p>bruna_o@gmail.com</p>
-            <p>333.333.333-33</p>
+            {updatedProfile?.map((element: any) => (
+              <>
+                <p>{element.name}</p>
+                <p>{element.email}</p>
+                <p>{element.cpf}</p>
+              </>
+            ))}
           </main>
           <BsPencil onClick={goToEditProfile} />
         </div>

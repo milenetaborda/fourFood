@@ -6,7 +6,7 @@ import { Container, Form } from './styles';
 import { UserUpdateForm } from '../../../models/userAction';
 import Header from '../../../components/Header';
 import Input from '../../../container/Input/input';
-import { updateProfile } from '../../../store/modules/UserStore/actions';
+import { updateProfile } from '../../../store/modules/UserProfile/actions';
 
 const EditProfile: React.FC = () => {
   const formRef = useRef<any>(null);
