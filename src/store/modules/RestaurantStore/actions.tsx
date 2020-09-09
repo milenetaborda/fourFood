@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import axios from 'axios';
+import { Dispatch } from 'react';
+import { Action } from 'redux';
 import { Restaurants } from '../../../models/restaurant.interface';
 
 const baseURL =
@@ -27,7 +29,7 @@ export const setRestaurantDetail = (restaurantId: string) => {
   };
 };
 
-export const getRestaurants = () => async (dispatch: any) => {
+export const getRestaurants = () => async (dispatch: Dispatch<Action>) => {
   const token = localStorage.getItem('token');
 
   try {
@@ -46,7 +48,7 @@ export const getRestaurants = () => async (dispatch: any) => {
 export const getRestaurantDetail = (
   restaurantId: string,
   history: any,
-) => async (dispatch: any) => {
+) => async (dispatch: Dispatch<Action>) => {
   const token = localStorage.getItem('token');
 
   try {

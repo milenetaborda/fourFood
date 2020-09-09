@@ -31,26 +31,25 @@ const Profile: React.FC = () => {
       <Header />
 
       <div className="WrapperInfo">
-        <div>
-          <main>
-            {updatedProfile?.map((element: any) => (
-              <>
+        {updatedProfile?.map((element: any) => (
+          <>
+            <div>
+              <main>
                 <p>{element.name}</p>
                 <p>{element.email}</p>
                 <p>{element.cpf}</p>
-              </>
-            ))}
-          </main>
-          <BsPencil onClick={goToEditProfile} />
-        </div>
-
-        <aside>
-          <div>
-            <span>Endereço cadastrado</span>
-            <p>Rua Alessandra Vieira, 42 - Santana</p>
-          </div>
-          <BsPencil />
-        </aside>
+              </main>
+              <BsPencil onClick={goToEditProfile} />
+            </div>
+            <aside>
+              <div>
+                <span>Endereço cadastrado</span>
+                <p>{element.address}</p>
+              </div>
+              <BsPencil />
+            </aside>
+          </>
+        ))}
 
         <h2>Histórico de pedidos</h2>
         <hr />

@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import axios from 'axios';
-import { userInfo } from 'os';
 import { UserLogin, UserSignup, UserAddress } from '../../../models/userAction';
 import api from '../../../services/api';
 
@@ -59,7 +58,6 @@ export const signup = (
 };
 
 export const addAddress = (body: UserAddress, history: any) => async () => {
-  console.log('deu');
   const token = localStorage.getItem('token');
 
   try {
